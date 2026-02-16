@@ -1,0 +1,38 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "desi-ft-gravity"
+version = "0.1.0"
+description = "Bayesian inference pipeline for f(T) teleparallel gravity using DESI BAO data"
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.10"
+authors = [
+    { name = "Sachin Mohandas" },
+]
+dependencies = [
+    "numpy>=1.24",
+    "scipy>=1.10",
+    "emcee>=3.1",
+    "h5py>=3.8",
+    "getdist>=1.4",
+    "matplotlib>=3.7",
+    "pyyaml>=6.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0",
+    "pytest-cov>=4.0",
+]
+nested = [
+    "dynesty>=2.1",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/desi_ft"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

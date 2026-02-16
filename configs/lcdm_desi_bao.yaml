@@ -1,0 +1,26 @@
+model:
+  name: lcdm
+  params:
+    Omega_m:
+      prior: [0.1, 0.9]
+      start: 0.3
+    H0:
+      prior: [50, 100]
+      start: 68.0
+    r_d:
+      fixed: 147.09   # Mpc — fix r_d for BAO-only (degenerate with H0)
+
+likelihood:
+  bao:
+    data_file: data/desi_dr1_bao/desi_2024_gaussian_bao_ALL_GCcomb_mean.txt
+    cov_file: data/desi_dr1_bao/desi_2024_gaussian_bao_ALL_GCcomb_cov.txt
+
+sampler:
+  type: emcee
+  n_walkers: 32
+  n_steps: 10000
+  n_burn: 2000
+
+output:
+  chain_dir: chains/lcdm_desi_bao
+  figure_dir: figures/lcdm_desi_bao
